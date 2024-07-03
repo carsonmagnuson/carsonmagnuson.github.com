@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h3>Welcome to my GIFT SUGGESTIONS website.
+        <br>
+        I know—it looks ugly.
+        I'm not sorry.
+    </h3>
+    <p>
+        Let me premise this by saying: <b>I do not need or want presents. </b> I buy most things I want for myself, and
+        you should feel absolutely no obligation to send me gifts for my birthday or Christmas—<b>I don't care if you're
+            my friend or my mom, this applies equally to everyone</b>.
+
+        <br>
+    <h1>(That means: GO AWAY. You did your due diligence)</h1>
+    <br>
+
+    If you're still here, if you so feel that you just <b>must</b> buy me a gift, to alleviate some sort of misplaced
+    sense of guilt or otherwise, fine.
+    </p>
+    <button onclick="fetchGifts()">Load Suggestions</button>
+    <br>
+    <br>
+    <div id="gifts-container"></div>
+
+    <!-- <p>
+        Most of these are little things that I feel like would improve my quality of life, but what I have currently
+        suffices such that I have not deemed them worth an immediate purchase. Let me also state that choosing *not* to
+        get me a gift is also a gift in of itself, as it reduces my stress. I won't have to worry about a gift that I
+        will likely not use and not know what to do with, nor will I have to act like I like it.
+    </p> -->
+
+</body>
+<script>
+
+    // Function to fetch gifts from Flask backend
+    const fetchGifts = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/gifts');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const gifts = await response.json();
+            displayGifts(gifts); // Display gifts on the webpage
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    // Function to display gifts on the webpage
+    const displayGifts = (gifts) => {
+        const giftsContainer = document.getElementById('gifts-container');
+        giftsContainer.innerHTML = '<br> smh. You really did that. <br> <br>';
+        gifts.forEach(gift => {
+            const giftElement = document.createElement('div');
+            giftElement.classList.add('gift');
+            giftElement.innerHTML = `
+	   ${gift.name} | <a href="${gift.link}">Link</a> 
+            `;
+            giftsContainer.prepend(giftElement);
+        });
+    };
+
+    // Frontend JavaScript code
+    document.addEventListener('DOMContentLoaded', () => {
+
+
+        // fetchGifts(); // Fetch gifts when the page loads
+    });
+
+</script>
+<script src="vanilla.js"></script>
+
+</html>
