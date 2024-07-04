@@ -51,7 +51,8 @@
 
     var staticGifts = [
         { id: 1, name: "Apple Airtag(s)", link: "https://a.co/d/02GbecVz", comment: "" },
-        { id: 2, name: "Amazon Giftcard", link: "https://a.co/d/02GbecVz", comment: "You literally can't go wrong with this one." }
+        { id: 2, name: "Amazon Giftcard", link: "https://www.amazon.com/gift-cards/", comment: "You literally can't go wrong with this one." },
+        { id: 2, name: "Pizza", link: "https://letmegooglethat.com/?q=Nearest+Pizza+Place", comment: "You can't go wrong with this one either." }
     ];
 
     // Function to display gifts on the webpage
@@ -62,7 +63,7 @@
             const giftElement = document.createElement('div');
             giftElement.classList.add('gift');
             giftElement.innerHTML = `
-	   ${gift.name} | <a href="${gift.link}">Link</a> 
+	   - <span style="font-size: 24px; font-weight: bold; color: #333;"> ${gift.name} </span> | <a href="${gift.link}">Link</a> 
             `;
             giftsContainer.prepend(giftElement);
         });
@@ -76,6 +77,6 @@
     });
 
 </script>
-<script src="vanilla.js"></script>
+<!-- <script src="vanilla.js"></script> -->
 
 </html>
