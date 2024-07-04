@@ -19,7 +19,7 @@
     If you're still here, if you so feel that you just <b>must</b> buy me a gift, to alleviate some sort of misplaced
     sense of guilt or otherwise, fine.
     </p>
-    <button onclick="fetchGifts()">Load Suggestions</button>
+    <button onclick="displayGifts(staticGifts)">Load Suggestions</button>
     <br>
     <br>
     <div id="gifts-container"></div>
@@ -45,8 +45,14 @@
             displayGifts(gifts); // Display gifts on the webpage
         } catch (error) {
             console.error('Error fetching data:', error);
-        }
+        }	
     };
+
+
+    var staticGifts = [
+        { id: 1, name: "Apple Airtag(s)", link: "https://a.co/d/02GbecVz", comment: "" },
+        { id: 2, name: "Amazon Giftcard", link: "https://a.co/d/02GbecVz", comment: "You literally can't go wrong with this one." }
+    ];
 
     // Function to display gifts on the webpage
     const displayGifts = (gifts) => {
